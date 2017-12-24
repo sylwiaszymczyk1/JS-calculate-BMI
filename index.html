@@ -20,22 +20,31 @@
             <label for="heightInput">Height(cm)</label>
             <input type="number" class="form-control" id="heightInput" placeholder="Height">
         </div>
-        <button onclick="myFunction()" type="button" class="btn btn-default">Calculate</button>
+        <button onclick="showHeightAndWeight()" type="button" class="btn btn-info">Show inputs</button>
+        <button onclick="" type="button" class="btn btn-success">Show BMI</button>
 
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script>
-        function myFunction() {
-            weightElement = document.getElementById("weightInput")
-            weight=weightElement.valueAsNumber
-            heightElement = document.getElementById("heightInput")
-            height=heightElement.valueAsNumber
-            
+        function showHeightAndWeight () {
+            let weight = getWeight()
+            let height = getHeight()        
             alert("Waga: "+ weight + "\n" + "Wzrost: "+ height );
 
         }
+        function getWeight() {
+            let weightElement = document.getElementById("weightInput");
+            let weight = weightElement.valueAsNumber
+            return weight; 
+        }
+        function getHeight () {
+            let heightElement = document.getElementById("heightInput");
+            let height = heightElement.valueAsNumber
+            return height;
+        }
+            
 
     </script>
 </body>
