@@ -21,7 +21,7 @@
             <input type="number" class="form-control" id="heightInput" placeholder="Height">
         </div>
         <button onclick="showHeightAndWeight()" type="button" class="btn btn-info">Show inputs</button>
-        <button onclick="" type="button" class="btn btn-success">Show BMI</button>
+        <button onclick="showBMI ()" type="button" class="btn btn-success">Show BMI</button>
 
     </div>
 
@@ -29,23 +29,28 @@
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script>
         function showHeightAndWeight () {
-            let weight = getWeight()
-            let height = getHeight()        
+            let weight = getWeight();
+            let height = getHeight();       
             alert("Waga: "+ weight + "\n" + "Wzrost: "+ height );
 
         }
         function getWeight() {
             let weightElement = document.getElementById("weightInput");
-            let weight = weightElement.valueAsNumber
+            let weight = weightElement.valueAsNumber;
             return weight; 
         }
         function getHeight () {
             let heightElement = document.getElementById("heightInput");
-            let height = heightElement.valueAsNumber
+            let height = heightElement.valueAsNumber;
             return height;
         }
-            
-
+        function showBMI () {
+            let BMI= getWeight()/(getHeightInMeter()*getHeightInMeter());
+            alert ("Twoje BMI to " + BMI);
+        }
+        function getHeightInMeter (){
+            return getHeight()/100
+        }
     </script>
 </body>
 
