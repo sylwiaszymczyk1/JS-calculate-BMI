@@ -10,50 +10,73 @@
 </head>
 
 <body>
-    <h1>BMI Calculator</h1>
-    <div>
-        <div class="form-group">
-            <label for="weightInput">Weight(kg)</label>
-            <input type="number" class="form-control" id="weightInput" placeholder="Weight">
-        </div>
-        <div class="form-group">
-            <label for="heightInput">Height(cm)</label>
-            <input type="number" class="form-control" id="heightInput" placeholder="Height">
-        </div>
-        <button onclick="showHeightAndWeight()" type="button" class="btn btn-info">Show inputs</button>
-        <button onclick="showBMI ()" type="button" class="btn btn-success">Show BMI</button>
+    <div class="row width-limit">
 
+        <h1>BMI Calculator</h1>
+        <div>
+            <div class="form-group">
+                <label for="weightInput">Weight(kg)</label>
+                <input type="number" class="form-control" id="weightInput" placeholder="Weight">
+            </div>
+            <div class="form-group">
+                <label for="heightInput">Height(cm)</label>
+                <input type="number" class="form-control" id="heightInput" placeholder="Height">
+            </div>
+            <button onclick="showHeightAndWeight()" type="button" class="btn btn-info">Show inputs</button>
+            <button onclick="showBMI ()" type="button" class="btn btn-success">Show BMI</button>
+
+        </div>
+        <div class="panel panel-default my-margin-top">
+            <div class="panel-heading">
+                <h3 class="panel-title">Result</h3>
+            </div>
+            <div class="panel-body" id="result">
+                ...
+            </div>
+        </div>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script>
-        function showHeightAndWeight () {
+        function showHeightAndWeight() {
             let weight = getWeight();
-            let height = getHeight();       
-            alert("Waga: "+ weight + "\n" + "Wzrost: "+ height );
-
+            let height = getHeight();
+            // alert("Waga: " + weight + "\n" + "Wzrost: " + height);
+            showTextInResultPanel("You have typed: Weight= " + weight + " Height= " + height)
         }
+
+
+        function showTextInResultPanel(textToShow) {
+            let div = document.getElementById('result');
+            div.innerHTML = textToShow;          
+        }
+
         function getWeight() {
             let weightElement = document.getElementById("weightInput");
             let weight = weightElement.valueAsNumber;
-            return weight; 
+            return weight;
         }
-        function getHeight () {
+
+        function getHeight() {
             let heightElement = document.getElementById("heightInput");
             let height = heightElement.valueAsNumber;
             return height;
         }
-        function showBMI () {
-            let BMI= calculateBMI (getHeightInMeter(), getWeight())
-            alert ("Twoje BMI to " + BMI);
+
+        function showBMI() {
+            let BMI = calculateBMI(getHeightInMeter(), getWeight())
+            //alert("Twoje BMI to " + BMI);
+            showTextInResultPanel("Twoje BMI to " + BMI);
         }
-        function getHeightInMeter (){
-            return getHeight()/100
+
+        function getHeightInMeter() {
+            return getHeight() / 100
         }
+
         function calculateBMI(height, weight) {
-            let BMI= weight/(height*height);
-            BMI = Math.round(BMI*100)/100
+            let BMI = weight / (height * height);
+            BMI = Math.round(BMI * 100) / 100
             return BMI
         }
     </script>
